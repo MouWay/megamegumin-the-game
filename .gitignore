@@ -42,3 +42,6 @@ Thumbs.db
 MegaMegumin/Logs/AssetImportWorker0-prev.log
 MegaMegumin/Logs/AssetImportWorker1-prev.log
 *.log
+*.log
+MegaMegumin/Logs/shadercompiler-UnityShaderCompiler.exe0.log
+MegaMegumin/UserSettings/Layouts/default-2021.dwlt

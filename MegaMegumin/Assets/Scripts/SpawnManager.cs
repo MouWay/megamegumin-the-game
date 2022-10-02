@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private GameObject _defuserPrefab;
+    [SerializeField] private GameObject _dinoPrefab;
     [SerializeField] private List<Transform> _spawnPoints;
 
     private void Start()

@@ -30,7 +30,7 @@ public class Missile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Tilemap")
+        if (collision.gameObject.name == "Tilemap" || collision.gameObject.CompareTag("Enemy"))
         {
             Explode();
         }

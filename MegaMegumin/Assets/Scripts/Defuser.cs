@@ -22,10 +22,13 @@ public class Defuser : MonoBehaviour
         if (_isAlive == false)
         {
             _deathTimer += Time.deltaTime;
-            if (_deathTimer > 10)
+            if (_deathTimer > 10 && _deathTimer < 12)
             {
                 _animator.SetTrigger("Death");
-            } 
+            }  else if (_deathTimer > 12)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 

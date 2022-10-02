@@ -73,7 +73,7 @@ public class Dino : MonoBehaviour
     public void ReactToPlayer()
     {
         Vector3 _playerDirection = _playerTransform.position - transform.position;
-        _hasTarget = _playerDirection.magnitude < 10.0f;
+        _hasTarget = _playerDirection.magnitude < 100.0f;
     }
 
     public void AttackPlayer()

@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
         _animator = _player.GetComponent<Animator>();
         _rigidBody = _player.GetComponent<Rigidbody2D>();
         _speed = 4f; //3f;
-        _jumpForce = 300f;
+        _jumpForce = 400f;
         _checkRadius = 0.1f;
     }
 

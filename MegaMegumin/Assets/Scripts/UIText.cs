@@ -12,6 +12,7 @@ public class UIText : MonoBehaviour
     [SerializeField] private GameObject _restartButton;
     private int _enemiesCount;
     private bool _isPlayerAlive;
+    private bool _isDefuserAlive;
 
     private void Start()
     {
@@ -20,6 +21,7 @@ public class UIText : MonoBehaviour
 
     void Update()
     {
+        _isDefuserAlive = GameObject.FindGameObjectsWithTag("Boss").Length == 0 ? false : true;
         _isPlayerAlive = GameObject.FindGameObjectsWithTag("Player").Length == 0 ? false : true;
         _enemiesCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
         _enemiesLeftText.SetText("Enemies left: {0}", _enemiesCount);
@@ -27,6 +29,12 @@ public class UIText : MonoBehaviour
         {
             _restartButton.SetActive(true);
             _gameOverText.SetActive(true);
+        }
+        if (_isDefuserAlive == false)
+        {
+            _gameOverText.GetComponent<TextMeshProUGUI>().text = "You win!";
+            _gameOverText.SetActive(true);
+            _restartButton.SetActive(true);
         }
     }
 

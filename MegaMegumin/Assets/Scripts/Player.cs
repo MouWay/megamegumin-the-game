@@ -104,6 +104,7 @@ public class Player : MonoBehaviour
         _animator.SetTrigger("Death");
         GetComponent<BoxCollider2D>().enabled = false;
         tag = "Untagged";
+        GetComponent<AudioSource>().enabled = true;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

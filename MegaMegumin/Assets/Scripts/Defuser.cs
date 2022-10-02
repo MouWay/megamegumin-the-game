@@ -7,11 +7,13 @@ public class Defuser : MonoBehaviour
     private int _enemiesCount;
     private bool _isAlive;
     private float _deathTimer;
+    private Animator _animator;
 
 
     private void Start()
     {
-        _isAlive = true;   
+        _isAlive = true;
+        _animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -22,8 +24,8 @@ public class Defuser : MonoBehaviour
             _deathTimer += Time.deltaTime;
             if (_deathTimer > 10)
             {
-                Destroy(this.gameObject);
-            }
+                _animator.SetTrigger("Death");
+            } 
         }
     }
 

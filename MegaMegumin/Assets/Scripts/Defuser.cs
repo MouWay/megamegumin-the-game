@@ -8,6 +8,12 @@ public class Defuser : MonoBehaviour
     private bool _isAlive;
     private float _deathTimer;
 
+
+    private void Start()
+    {
+        _isAlive = true;   
+    }
+
     void Update()
     {
         _enemiesCount = GameObject.FindGameObjectsWithTag("Enemy").Length;

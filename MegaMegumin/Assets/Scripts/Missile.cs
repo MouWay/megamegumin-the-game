@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Missile : MonoBehaviour
 {
+    [SerializeField] private GameObject _explotion;
+
     private float _speed;
     private float _direction;
 
@@ -22,7 +24,21 @@ public class Missile : MonoBehaviour
     {
         if (collision.CompareTag("MissileDestroyer"))
         {
-            Destroy(this.gameObject);
+            Explode();
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "Tilemap")
+        {
+            Explode();
+        }
+    }
+
+    private void Explode()
+    {
+        Instantiate(_explotion, transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
     }
 }

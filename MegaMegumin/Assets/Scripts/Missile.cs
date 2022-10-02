@@ -9,14 +9,13 @@ public class Missile : MonoBehaviour
     private float _speed;
     private float _direction;
 
-    void Start()
+    private void Start()
     {
         _direction = Mathf.Round(transform.rotation.z);
         _speed = 10f;    
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         transform.position += _direction * _speed * Time.deltaTime * Vector3.left;
     }

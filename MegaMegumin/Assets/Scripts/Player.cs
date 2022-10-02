@@ -15,17 +15,19 @@ public class Player : MonoBehaviour
     private float _checkRadius;
     private Vector3 _moveVector;
     private Rigidbody2D _rigidBody;
+    private BoxCollider2D _playerCollider;
     private SpriteRenderer _spriteRenderer;
     private Animator _animator;
     private bool _isGrounded;
 
     private void Start()
     {
+        _playerCollider = _player.GetComponent<BoxCollider2D>();
         _spriteRenderer = _player.GetComponent<SpriteRenderer>();
         _animator = _player.GetComponent<Animator>();
         _rigidBody = _player.GetComponent<Rigidbody2D>();
         _speed = 4f; //3f;
-        _jumpForce = 200f;
+        _jumpForce = 250f;
         _checkRadius = 0.1f;
     }
 
@@ -72,11 +74,13 @@ public class Player : MonoBehaviour
         {
             _spriteRenderer.flipX = true;
             _missilePosition.localPosition = new Vector3(0.179f, 0.135f, 0);
+            _playerCollider.offset = new Vector2(-0.05f, 0);
         } 
         else if (Input.GetAxis("Horizontal") < 0)
         {
             _spriteRenderer.flipX = false;
             _missilePosition.localPosition = new Vector3(-0.179f, 0.135f, 0);
+            _playerCollider.offset = new Vector2(0.05f, 0);
         }
     }
 }

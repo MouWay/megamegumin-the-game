@@ -32,7 +32,7 @@ public class UIText : MonoBehaviour
         }
         if (_isDefuserAlive == false)
         {
-            _gameOverText.GetComponent<TextMeshProUGUI>().text = "You win!";
+            _gameOverText.GetComponent<TextMeshProUGUI>().text = "You won!";
             _gameOverText.SetActive(true);
             _restartButton.SetActive(true);
         }

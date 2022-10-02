@@ -12,7 +12,6 @@ public class Missile : MonoBehaviour
     void Start()
     {
         _direction = Mathf.Round(transform.rotation.z);
-        Debug.Log(_direction);
         _speed = 10f;    
     }
 
@@ -20,5 +19,13 @@ public class Missile : MonoBehaviour
     void Update()
     {
         transform.position += _direction * _speed * Time.deltaTime * Vector3.left;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("MissileDestroyer"))
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

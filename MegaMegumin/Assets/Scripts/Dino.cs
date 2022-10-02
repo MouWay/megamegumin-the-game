@@ -134,4 +134,14 @@ public class Dino : MonoBehaviour
             GetComponent<CircleCollider2D>().enabled = false;
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Missile"))
+        {
+            _isAlive = false;
+            _animator.SetTrigger("Death");
+            GetComponent<CircleCollider2D>().enabled = false;
+        }
+    }
 }

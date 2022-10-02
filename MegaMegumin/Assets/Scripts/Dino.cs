@@ -125,13 +125,19 @@ public class Dino : MonoBehaviour
         _isGrounded = Physics2D.OverlapCircle(_groundCheck.position, _checkRadius, _ground);
     }
 
+    private void Death()
+    {
+        _isAlive = false;
+        _animator.SetTrigger("Death");
+        GetComponent<CircleCollider2D>().enabled = false;
+        tag = "Untagged";
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Missile"))
         {
-            _isAlive = false;
-            _animator.SetTrigger("Death");
-            GetComponent<CircleCollider2D>().enabled = false;
+            Death();
         }
     }
 
@@ -139,9 +145,7 @@ public class Dino : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Missile"))
         {
-            _isAlive = false;
-            _animator.SetTrigger("Death");
-            GetComponent<CircleCollider2D>().enabled = false;
+            Death();
         }
     }
 }

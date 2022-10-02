@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     private float _speed;
     private float _jumpForce;
     private float _checkRadius;
+    private float _deathTimer;
+    private bool _isAlive;
     private Vector3 _moveVector;
     private Rigidbody2D _rigidBody;
     private BoxCollider2D _playerCollider;
@@ -22,6 +24,8 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        _deathTimer = 0f;
+        _isAlive = true;
         _playerCollider = _player.GetComponent<BoxCollider2D>();
         _spriteRenderer = _player.GetComponent<SpriteRenderer>();
         _animator = _player.GetComponent<Animator>();
@@ -33,21 +37,31 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        _animator.SetFloat("moveX", Mathf.Abs(Input.GetAxis("Horizontal")));
-        float _horizontalMove = _speed * Input.GetAxis("Horizontal") * Time.deltaTime;
-        _moveVector = new Vector3(_horizontalMove, 0, 0);
-        _player.transform.position += _moveVector;
         CheckGround();
-        Flip();
-
-        if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
+        if (_isAlive)
         {
-            Jump();
-        }
+            _animator.SetFloat("moveX", Mathf.Abs(Input.GetAxis("Horizontal")));
+            float _horizontalMove = _speed * Input.GetAxis("Horizontal") * Time.deltaTime;
+            _moveVector = new Vector3(_horizontalMove, 0, 0);
+            _player.transform.position += _moveVector;
+            Flip();
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
+            {
+                Jump();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                Shoot();
+            }
+        } else
         {
-            Shoot();
+            _deathTimer += Time.deltaTime;
+            if (_isGrounded)
+            {
+                GetComponent<Rigidbody2D>().simulated = false;
+            }
         }
     }
 
@@ -81,6 +95,22 @@ public class Player : MonoBehaviour
             _spriteRenderer.flipX = false;
             _missilePosition.localPosition = new Vector3(-0.179f, 0.135f, 0);
             _playerCollider.offset = new Vector2(0.05f, 0);
+        }
+    }
+
+    private void Death()
+    {
+        _isAlive = false;
+        _animator.SetTrigger("Death");
+        GetComponent<BoxCollider2D>().enabled = false;
+        tag = "Untagged";
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Death();
         }
     }
 }

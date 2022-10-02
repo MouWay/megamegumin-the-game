@@ -40,9 +40,9 @@ public class Dino : MonoBehaviour
 
     private void FixedUpdate()
     {
+        CheckGround();
         if (_isAlive)
         {
-            CheckGround();
             _direction = _playerTransform.position.x - transform.position.x < 0 ? 1 : -1;
             Flip(_direction);
             ReactToPlayer();
@@ -61,6 +61,10 @@ public class Dino : MonoBehaviour
             if (_deathTimer > 2)
             {
                 Destroy(this.gameObject);
+            }
+            if (_isGrounded)
+            {
+                GetComponent<Rigidbody2D>().simulated = false;
             }
         }
     }
@@ -127,6 +131,7 @@ public class Dino : MonoBehaviour
         {
             _isAlive = false;
             _animator.SetTrigger("Death");
+            GetComponent<CircleCollider2D>().enabled = false;
         }
     }
 }

@@ -20,17 +20,9 @@ public class Missile : MonoBehaviour
         transform.position += _direction * _speed * Time.deltaTime * Vector3.left;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("MissileDestroyer"))
-        {
-            Explode();
-        }
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Tilemap" || collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.name == "Tilemap" || collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("MissileDestroyer"))
         {
             Explode();
         }

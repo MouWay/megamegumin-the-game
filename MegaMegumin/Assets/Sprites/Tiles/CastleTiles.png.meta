@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8eceb0fc63a02aa40bfecfcc75dd5c17
+guid: 94a2e7917d53fdb44947c66d88aee51d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 80
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SandraShoot_0
+      name: CastleTiles_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,20 +119,83 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd2e32ed505cb8b43bb498da42cbf131
-      internalID: 1198293194
+      spriteID: 4ee9ba159b685874195deef641bfd973
+      internalID: -1799341972
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SandraShoot_1
+      name: CastleTiles_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aeaba3abdbca7b14e82c964a93387841
+      internalID: -851451776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CastleTiles_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73f2d0f5a0759fe4ea39f9e3f67e5c86
+      internalID: -575243544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CastleTiles_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ae2fd2b746ef6240b7d97afe4c81b62
+      internalID: -509259620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CastleTiles_4
       rect:
         serializedVersion: 2
         x: 64
         y: 0
-        width: 64
-        height: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +203,83 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 307f60beb6dd6614c96552ee1ae6374b
-      internalID: -1387169951
+      spriteID: 560bff3f664019c4d9eb95ab4d590f85
+      internalID: 1559746202
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SandraShoot_2
+      name: CastleTiles_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0b6f91ae9bde8943810ef435588fcf7
+      internalID: -1242990320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CastleTiles_6
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4673047b69b93945a1cab3491a43aed
+      internalID: 2094455951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CastleTiles_7
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30821b3bdd8cf5040a93774ae20f5de0
+      internalID: -2084619708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CastleTiles_8
       rect:
         serializedVersion: 2
         x: 128
         y: 0
-        width: 64
-        height: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,20 +287,83 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28f23a1f8ab872347ba5103ca43cf48d
-      internalID: 1845431251
+      spriteID: fd39bfc37b810ea4db309d93c116eef4
+      internalID: -845994231
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SandraShoot_3
+      name: CastleTiles_9
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df7b2019815dc6d4db14a5706eacea0b
+      internalID: -1077227946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CastleTiles_10
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 567d39666914bc54cbd842d673228492
+      internalID: -1842202820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CastleTiles_11
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfe2edd60a468024ab34e1ed6787233d
+      internalID: -517486728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CastleTiles_12
       rect:
         serializedVersion: 2
         x: 192
         y: 0
-        width: 64
-        height: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,20 +371,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f97642d18d1f0148a699e437c610085
-      internalID: 1276813835
+      spriteID: 7b854d4b9ee432b4cb2621f24065eb5f
+      internalID: 1031641674
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SandraShoot_4
+      name: CastleTiles_13
       rect:
         serializedVersion: 2
-        x: 256
+        x: 208
         y: 0
-        width: 64
-        height: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,20 +392,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88d594dc55b62b24a915ed1b94dd2ea2
-      internalID: 490066542
+      spriteID: 9b3269bbffab6444091cb192867a5486
+      internalID: -571491918
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SandraShoot_5
+      name: CastleTiles_14
       rect:
         serializedVersion: 2
-        x: 320
+        x: 224
         y: 0
-        width: 64
-        height: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,20 +413,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e076a0d2831d7df458512865109901ad
-      internalID: -1228146538
+      spriteID: b24260a43e141304b82bae9b16af71e3
+      internalID: 914999946
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SandraShoot_6
+      name: CastleTiles_15
       rect:
         serializedVersion: 2
-        x: 384
+        x: 240
         y: 0
-        width: 64
-        height: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -245,92 +434,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 239dff4b1dbc9b7408280820fb94c81b
-      internalID: 574934828
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SandraShoot_7
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4affdf6cf474b77439a191eb3cf161e8
-      internalID: 1843319071
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SandraShoot_8
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7fd68d37e2e157446a189d3471af6d14
-      internalID: 610166924
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SandraShoot_9
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5f5a78a432824264996affcc1c0a3e7b
-      internalID: 1636545238
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SandraShoot_10
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 617def43703e64649adb2488f6915afc
-      internalID: -22926061
+      spriteID: 1d4ef9b7ff5eddd47b60a6985ebd6e4a
+      internalID: -579264244
       vertices: []
       indices: 
       edges: []
@@ -346,17 +451,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SandraShoot_4: 490066542
-      SandraShoot_1: -1387169951
-      SandraShoot_6: 574934828
-      SandraShoot_2: 1845431251
-      SandraShoot_5: -1228146538
-      SandraShoot_8: 610166924
-      SandraShoot_3: 1276813835
-      SandraShoot_0: 1198293194
-      SandraShoot_9: 1636545238
-      SandraShoot_7: 1843319071
-      SandraShoot_10: -22926061
+      CastleTiles_3: -509259620
+      CastleTiles_6: 2094455951
+      CastleTiles_14: 914999946
+      CastleTiles_8: -845994231
+      CastleTiles_9: -1077227946
+      CastleTiles_4: 1559746202
+      CastleTiles_7: -2084619708
+      CastleTiles_11: -517486728
+      CastleTiles_2: -575243544
+      CastleTiles_13: -571491918
+      CastleTiles_0: -1799341972
+      CastleTiles_15: -579264244
+      CastleTiles_10: -1842202820
+      CastleTiles_1: -851451776
+      CastleTiles_5: -1242990320
+      CastleTiles_12: 1031641674
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

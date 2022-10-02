@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8eceb0fc63a02aa40bfecfcc75dd5c17
+guid: c58d3798fde70824e8467f35a894cb02
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 80
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -105,232 +105,345 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SandraShoot_0
+      name: SnowTiles_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 64
-        height: 64
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 0, y: 5}
+        - {x: 0, y: 4}
+        - {x: -4, y: 4}
+        - {x: -4, y: 3}
+        - {x: -5, y: 3}
+        - {x: -5, y: 2}
+        - {x: -6, y: 2}
+        - {x: -6, y: 0}
+        - {x: -7, y: 0}
+        - {x: -7, y: -2}
+        - {x: -8, y: -2}
+        - {x: -8, y: -8}
+        - {x: 8, y: -8}
+        - {x: 8, y: 6}
+        - {x: 3, y: 6}
+        - {x: 3, y: 5}
       tessellationDetail: 0
       bones: []
-      spriteID: cd2e32ed505cb8b43bb498da42cbf131
-      internalID: 1198293194
+      spriteID: 2a927a03153574b49b76850138de8ca2
+      internalID: -2128242211
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SandraShoot_1
+      name: SnowTiles_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 64
-        height: 64
+        x: 16
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 0, y: 6}
+        - {x: 0, y: 5}
+        - {x: -5, y: 5}
+        - {x: -5, y: 6}
+        - {x: -8, y: 6}
+        - {x: -8, y: -8}
+        - {x: 8, y: -8}
+        - {x: 8, y: 5}
+        - {x: 7, y: 5}
+        - {x: 7, y: 6}
       tessellationDetail: 0
       bones: []
-      spriteID: 307f60beb6dd6614c96552ee1ae6374b
-      internalID: -1387169951
+      spriteID: a5080c59f1bfdbf40862f5137fcb7e6c
+      internalID: -872691870
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SandraShoot_2
+      name: SnowTiles_2
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
+        x: 32
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -8, y: -8}
+        - {x: 8, y: -8}
+        - {x: 8, y: 6}
+        - {x: 4, y: 6}
+        - {x: 4, y: 5}
+        - {x: -1, y: 5}
+        - {x: -1, y: 6}
+        - {x: -8, y: 6}
       tessellationDetail: 0
       bones: []
-      spriteID: 28f23a1f8ab872347ba5103ca43cf48d
-      internalID: 1845431251
+      spriteID: 925ca48d65f5dc347954548e9048c172
+      internalID: -1319457735
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SandraShoot_3
+      name: SnowTiles_3
       rect:
         serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
+        x: 48
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 0, y: 5}
+        - {x: -3, y: 5}
+        - {x: -3, y: 6}
+        - {x: -8, y: 6}
+        - {x: -8, y: -8}
+        - {x: 8, y: -8}
+        - {x: 8, y: -2}
+        - {x: 7, y: -2}
+        - {x: 7, y: 0}
+        - {x: 6, y: 0}
+        - {x: 6, y: 2}
+        - {x: 5, y: 2}
+        - {x: 5, y: 3}
+        - {x: 4, y: 3}
+        - {x: 4, y: 4}
+        - {x: 0, y: 4}
       tessellationDetail: 0
       bones: []
-      spriteID: 9f97642d18d1f0148a699e437c610085
-      internalID: 1276813835
+      spriteID: 4fddc414a8b0526439cf1e82a3ca11c3
+      internalID: -749939845
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SandraShoot_4
+      name: SnowTiles_4
       rect:
         serializedVersion: 2
-        x: 256
-        y: 0
-        width: 64
-        height: 64
+        x: 0
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88d594dc55b62b24a915ed1b94dd2ea2
-      internalID: 490066542
+      spriteID: 15920e0be703b5541bf2ea78ea415954
+      internalID: -1704501360
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SandraShoot_5
+      name: SnowTiles_5
       rect:
         serializedVersion: 2
-        x: 320
-        y: 0
-        width: 64
-        height: 64
+        x: 16
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e076a0d2831d7df458512865109901ad
-      internalID: -1228146538
+      spriteID: a0f92464041326c4c80233304d8300b4
+      internalID: -1246686070
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SandraShoot_6
+      name: SnowTiles_6
       rect:
         serializedVersion: 2
-        x: 384
-        y: 0
-        width: 64
-        height: 64
+        x: 32
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 239dff4b1dbc9b7408280820fb94c81b
-      internalID: 574934828
+      spriteID: c0f347808983f5f46ac41e29a0b6710a
+      internalID: -2054540704
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SandraShoot_7
+      name: SnowTiles_7
       rect:
         serializedVersion: 2
-        x: 448
-        y: 0
-        width: 64
-        height: 64
+        x: 48
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4affdf6cf474b77439a191eb3cf161e8
-      internalID: 1843319071
+      spriteID: a1c91f273bd47924394978e027780402
+      internalID: 1984967444
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SandraShoot_8
+      name: SnowTiles_8
       rect:
         serializedVersion: 2
-        x: 512
-        y: 0
-        width: 64
-        height: 64
+        x: 0
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7fd68d37e2e157446a189d3471af6d14
-      internalID: 610166924
+      spriteID: 103633f63b6793a4f94bc8e61cb523be
+      internalID: -235064540
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SandraShoot_9
+      name: SnowTiles_9
       rect:
         serializedVersion: 2
-        x: 576
-        y: 0
-        width: 64
-        height: 64
+        x: 16
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f5a78a432824264996affcc1c0a3e7b
-      internalID: 1636545238
+      spriteID: 0e5b1a437628a4347a76ea3cd2441a15
+      internalID: 2085453665
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SandraShoot_10
+      name: SnowTiles_10
       rect:
         serializedVersion: 2
-        x: 640
-        y: 0
-        width: 64
-        height: 64
+        x: 32
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 617def43703e64649adb2488f6915afc
-      internalID: -22926061
+      spriteID: 0f546e695cd6ca14dbf6f04d5f762289
+      internalID: 1600570921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnowTiles_11
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7063d12f7737bb4f901f9e10681b8ea
+      internalID: 1981081074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnowTiles_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe3c19a2baab64f40bffdd895265e775
+      internalID: 889756893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnowTiles_13
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37a5964a5a91ad8458a10136e681b219
+      internalID: 346291053
       vertices: []
       indices: 
       edges: []
@@ -346,17 +459,20 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SandraShoot_4: 490066542
-      SandraShoot_1: -1387169951
-      SandraShoot_6: 574934828
-      SandraShoot_2: 1845431251
-      SandraShoot_5: -1228146538
-      SandraShoot_8: 610166924
-      SandraShoot_3: 1276813835
-      SandraShoot_0: 1198293194
-      SandraShoot_9: 1636545238
-      SandraShoot_7: 1843319071
-      SandraShoot_10: -22926061
+      SnowTiles_9: 2085453665
+      SnowTiles_3: -749939845
+      SnowTiles_12: 889756893
+      SnowTiles_5: -1246686070
+      SnowTiles_4: -1704501360
+      SnowTiles_2: -1319457735
+      SnowTiles_11: 1981081074
+      SnowTiles_8: -235064540
+      SnowTiles_13: 346291053
+      SnowTiles_1: -872691870
+      SnowTiles_10: 1600570921
+      SnowTiles_0: -2128242211
+      SnowTiles_7: 1984967444
+      SnowTiles_6: -2054540704
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

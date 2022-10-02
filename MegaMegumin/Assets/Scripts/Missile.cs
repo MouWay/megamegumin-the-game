@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class Missile : MonoBehaviour
 {
-    [SerializeField] private GameObject _player;
-
     private float _speed;
     private float _direction;
 
     private void Start()
     {
-        _direction = Mathf.Round(transform.rotation.z);
+        _direction = transform.rotation.z == 1 ? -1 : 1;
         _speed = 10f;    
     }
 

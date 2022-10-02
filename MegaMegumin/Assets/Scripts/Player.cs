@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
     private void Shoot()
     {
         int direction = _spriteRenderer.flipX ? -1 : 1;
-        Instantiate(_missile, _missilePosition.position, Quaternion.Euler(0, 0, 90 * direction));
+        Instantiate(_missile, _missilePosition.position, Quaternion.Euler(0, 0, 90 - 90 * direction));
         _animator.SetTrigger("Shoot");
     }
 

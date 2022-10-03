@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Missile
   - Boss
+  - EnemyWeapon
   layers:
   - Default
   - TransparentFX

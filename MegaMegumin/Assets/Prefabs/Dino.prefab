@@ -156,6 +156,7 @@ MonoBehaviour:
   _ground:
     serializedVersion: 2
     m_Bits: 64
+  _woodcutterPrefab: {fileID: 2118828286190985169, guid: 58a2460f8df4cc547b569dbf5aa2d55f, type: 3}
 --- !u!50 &3101989117945151842
 Rigidbody2D:
   serializedVersion: 4

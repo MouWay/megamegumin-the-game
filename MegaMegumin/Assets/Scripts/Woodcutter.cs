@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dino : MonoBehaviour
+public class Woodcutter : MonoBehaviour
 {
     [SerializeField] private Transform _groundCheck;
     [SerializeField] private LayerMask _ground;
-    [SerializeField] private GameObject _woodcutterPrefab;
+    [SerializeField] private GameObject _axe;
+    [SerializeField] private List<Transform> _hands;
 
     private float _speed;
     private float _dashForce;
     private float _jumpForce;
     private float _checkRadius;
     private float _deathTimer;
+    private float _attackDistance;
+    private float _attackCooldown;
     private int _direction;
     private bool _hasTarget;
     private bool _isGrounded;
@@ -27,13 +30,17 @@ public class Dino : MonoBehaviour
 
     private void Start()
     {
+        _attackCooldown = 0;
+        _attackDistance = 3f;
         _deathTimer = 0;
         _isAlive = true;
-        _checkRadius = 0.01f;
+        _checkRadius = 0.1f;
         _lastPosition = transform.position;
         _dashForce = 300f;
         _jumpForce = 500f;
-        _playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        if (GameObject.FindGameObjectWithTag("Player") != null) { 
+            _playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>(); 
+        }
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
         _rigidBody = GetComponent<Rigidbody2D>();
@@ -44,24 +51,40 @@ public class Dino : MonoBehaviour
         CheckGround();
         if (_isAlive)
         {
-            _direction = _playerTransform.position.x - transform.position.x < 0 ? 1 : -1;
+            if (GetDistanceToPlayer() - _attackDistance <= 0.001f && _attackCooldown == 0)
+            {
+                AttackPlayer();
+                _attackCooldown = 5f;
+            }
+            if (_playerTransform != null)
+            {
+                _direction = _playerTransform.position.x - transform.position.x < 0 ? 1 : -1;
+            }
             Flip(_direction);
             ReactToPlayer();
             ChangePositionValue();
-            if (IsPositionChanged() == false && _hasTarget)
-            {
-                Dash();
-            }
             if (IsUnderPlayer() && _isGrounded)
             {
                 Jump();
             }
-        } else
+            if (IsPositionChanged() == false && _hasTarget)
+            {
+                Dash();
+            }  
+            if(_attackCooldown > 0)
+            {
+                _attackCooldown -= Time.deltaTime;
+            }
+            if(_attackCooldown < 0)
+            {
+                _attackCooldown = 0;
+            }
+        }
+        else
         {
             _deathTimer += Time.deltaTime;
             if (_deathTimer > 2)
             {
-                Instantiate(_woodcutterPrefab, transform.position, Quaternion.identity);
                 Destroy(this.gameObject);
             }
             if (_isGrounded)
@@ -78,15 +101,28 @@ public class Dino : MonoBehaviour
 
     public void ReactToPlayer()
     {
-        Vector3 _playerDirection = _playerTransform.position - transform.position;
-        _hasTarget = _playerDirection.magnitude < 100.0f;
+        _hasTarget = GetDistanceToPlayer() < 100.0f;
     }
 
     public void AttackPlayer()
     {
-        //Behavior if player is inside attack area
+        foreach (var handPosition in _hands)
+        {
+            var axe = Instantiate(_axe, handPosition.position, Quaternion.identity);
+            axe.transform.SetParent(this.gameObject.transform);
+        }
+        _animator.SetTrigger("Attack");
     }
 
+    private float GetDistanceToPlayer()
+    {
+        if (_playerTransform != null)
+        {
+            Vector3 _playerDirection = _playerTransform.position - transform.position;
+            return _playerDirection.magnitude;
+        }
+        return 0;
+    }
     private void Flip(int direction)
     {
         _spriteRenderer.flipX = direction == 1 ? true : false;
@@ -113,8 +149,14 @@ public class Dino : MonoBehaviour
 
     private bool IsUnderPlayer()
     {
-        bool isUnderPlayer = _playerTransform.position.y - transform.position.y > 0 ? true : false;
-        return isUnderPlayer;
+        if (_playerTransform != null)
+        {
+            bool isUnderPlayer = _playerTransform.position.y - transform.position.y > 0 ? true : false;
+            return isUnderPlayer;
+        } else
+        {
+            return false;
+        }
     }
 
     private void Jump()

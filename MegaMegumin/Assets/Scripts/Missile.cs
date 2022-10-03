@@ -12,8 +12,7 @@ public class Missile : MonoBehaviour
 
     private void Start()
     {
-        _explosionTags = new List<string> {"Enemy", "MissileDestroyer", "Boss"};
-        Debug.Log(_explosionTags);
+        _explosionTags = new List<string> {"Enemy", "MissileDestroyer", "Boss", "Ground"};
         _direction = transform.rotation.z == 1 ? -1 : 1;
         _speed = 10f;    
     }
@@ -46,6 +45,6 @@ public class Missile : MonoBehaviour
                 return true;
             }
         }
-        return collision.gameObject.name == "Tilemap";
+        return false;
     }
 }

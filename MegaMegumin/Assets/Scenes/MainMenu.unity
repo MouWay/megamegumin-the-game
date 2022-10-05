@@ -606,6 +606,7 @@ GameObject:
   - component: {fileID: 286882673}
   - component: {fileID: 286882677}
   - component: {fileID: 286882676}
+  - component: {fileID: 286882678}
   m_Layer: 5
   m_Name: SetHardDifficultyButton
   m_TagString: Untagged
@@ -757,6 +758,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &286882678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286882671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd3ffb6a7c65aa419a8cfebd2077d73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _descriptionText: {fileID: 1667492399}
+  _blurObject: {fileID: 1611583746}
 --- !u!1 &336779291
 GameObject:
   m_ObjectHideFlags: 0
@@ -1282,6 +1297,7 @@ GameObject:
   - component: {fileID: 778968787}
   - component: {fileID: 778968791}
   - component: {fileID: 778968790}
+  - component: {fileID: 778968792}
   m_Layer: 5
   m_Name: SetNormalDifficultyButton
   m_TagString: Untagged
@@ -1433,6 +1449,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &778968792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778968785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9622768d301c0864cb22434d6bbc7055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _descriptionText: {fileID: 1667492399}
+  _blurObject: {fileID: 1611583746}
 --- !u!1 &1398522988
 GameObject:
   m_ObjectHideFlags: 0
@@ -1788,7 +1818,7 @@ GameObject:
   - component: {fileID: 1611583748}
   - component: {fileID: 1611583747}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Blur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1806,7 +1836,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59a42ac5a1461514d9c4a8a694678017, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _color: {r: 1, g: 1, b: 1, a: 1}
+  _color: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
   _editorFlipMode: 0
   _buildFlipMode: 0
   _intensity: 1
@@ -1876,7 +1906,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 303.18, y: 3.9693}
-  m_SizeDelta: {x: 800, y: 600}
+  m_SizeDelta: {x: 1000, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1667492399
 GameObject:
@@ -1914,7 +1944,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 303.18484, y: 3.9685}
-  m_SizeDelta: {x: 800, y: 600}
+  m_SizeDelta: {x: 1000, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1667492401
 MonoBehaviour:
@@ -1970,7 +2000,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 3
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0

@@ -14,6 +14,7 @@ public class Dino : MonoBehaviour
     private float _checkRadius;
     private float _deathTimer;
     private int _direction;
+    private int _difficulty;
     private bool _hasTarget;
     private bool _isGrounded;
     private bool _isAlive;
@@ -27,11 +28,12 @@ public class Dino : MonoBehaviour
 
     private void Start()
     {
+        _difficulty = PlayerPrefs.GetInt("Difficulty");
         _deathTimer = 0;
         _isAlive = true;
         _checkRadius = 0.01f;
         _lastPosition = transform.position;
-        _dashForce = 300f;
+        _dashForce = GetDashForce(_difficulty);
         _jumpForce = 500f;
         _playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -133,6 +135,11 @@ public class Dino : MonoBehaviour
         _animator.SetTrigger("Death");
         GetComponent<CircleCollider2D>().enabled = false;
         tag = "Untagged";
+    }
+
+    private float GetDashForce(int difficulty)
+    {
+        return (difficulty + 1) * 100f;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -6,9 +6,11 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _missile;
+    [SerializeField] private GameObject _hand;
     [SerializeField] private Transform _groundCheck;
-    [SerializeField] private LayerMask _ground;
     [SerializeField] private Transform _missilePosition;
+    [SerializeField] private Transform _shoulderPosition;
+    [SerializeField] private LayerMask _ground;
 
     private float _speed;
     private float _jumpForce;
@@ -16,6 +18,8 @@ public class Player : MonoBehaviour
     private float _deathTimer;
     private bool _isAlive;
     private Vector3 _moveVector;
+    private Vector3 _previousDirection;
+    private Vector3 _direction;
     private Rigidbody2D _rigidBody;
     private BoxCollider2D _playerCollider;
     private SpriteRenderer _spriteRenderer;
@@ -24,6 +28,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        _direction = GetDirection();
         _deathTimer = 0f;
         _isAlive = true;
         _playerCollider = _player.GetComponent<BoxCollider2D>();
@@ -37,6 +42,11 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        _previousDirection = _direction;
+        _direction = GetDirection();
+        var angle = Vector2.Angle(_direction, _previousDirection);
+        _hand.transform.RotateAround(_shoulderPosition.position, Vector3.forward, _direction.y < _previousDirection.y ? angle : -angle);
+
         CheckGround();
         if (_isAlive)
         {
@@ -84,15 +94,19 @@ public class Player : MonoBehaviour
 
     private void Flip()
     {
-        if (Input.GetAxis("Horizontal") > 0)
+        if (_direction.x > 0)
         {
             _spriteRenderer.flipX = true;
+            _hand.GetComponent<SpriteRenderer>().flipX = true;
+            _shoulderPosition.localPosition = new Vector3(-0.11f, 0.07f, 0);
             _missilePosition.localPosition = new Vector3(0.179f, 0.135f, 0);
             _playerCollider.offset = new Vector2(-0.05f, 0);
         } 
-        else if (Input.GetAxis("Horizontal") < 0)
+        else if (_direction.x < 0)
         {
             _spriteRenderer.flipX = false;
+            _hand.GetComponent<SpriteRenderer>().flipX = false;
+            _shoulderPosition.localPosition = new Vector3(0.11f, 0.07f, 0);
             _missilePosition.localPosition = new Vector3(-0.179f, 0.135f, 0);
             _playerCollider.offset = new Vector2(0.05f, 0);
         }
@@ -105,6 +119,16 @@ public class Player : MonoBehaviour
         GetComponent<BoxCollider2D>().enabled = false;
         tag = "Untagged";
         GetComponent<AudioSource>().enabled = true;
+    }
+
+    private Vector3 GetDirection()
+    {
+        var mousePosition = Input.mousePosition;
+        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition); //положение мыши из экранных в мировые координаты
+        return mousePosition - transform.position;
+        //var angle = Vector2.Angle(Vector2.right, mousePosition - transform.position) + 180;//угол между вектором от объекта к мыше и осью х
+        //_hand.transform.eulerAngles = new Vector3(0f, 0f, transform.position.y < mousePosition.y ? angle : -angle);//немного магии на последок
+        //_hand.transform.RotateAround(_shoulderPosition.position, Vector3.forward, transform.position.y < mousePosition.y ? angle : -angle);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

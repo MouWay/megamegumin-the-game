@@ -14,7 +14,9 @@ public class UIMenu : MonoBehaviour
 
     void Start()
     {
-        PlayerPrefs.SetString("EasyDifficultyDescription", "15 enemies\nSlow speed\nPlayer has 100 HP");
+        PlayerPrefs.SetString("EasyDifficultyDescription", "15 enemies\nLow enemy speed\nPlayer has 100 HP");
+        PlayerPrefs.SetString("NormalDifficultyDescription", "30 enemies\nNormal enemy speed\nPlayer has 50 HP");
+        PlayerPrefs.SetString("HardDifficultyDescription", "50 enemies\nHigh enemy speed\nPlayer has 1 HP");
         Time.timeScale = 1;
         _playButton.GetComponent<Button>().onClick.AddListener(ShowSetDifficultyButtons);
         _exitButton.GetComponent<Button>().onClick.AddListener(Quit);

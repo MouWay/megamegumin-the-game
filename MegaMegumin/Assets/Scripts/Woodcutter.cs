@@ -17,6 +17,7 @@ public class Woodcutter : MonoBehaviour
     private float _attackDistance;
     private float _attackCooldown;
     private int _direction;
+    private int _difficulty;
     private bool _hasTarget;
     private bool _isGrounded;
     private bool _isAlive;
@@ -30,13 +31,14 @@ public class Woodcutter : MonoBehaviour
 
     private void Start()
     {
+        _difficulty = PlayerPrefs.GetInt("Difficulty");
         _attackCooldown = 0;
         _attackDistance = 3f;
         _deathTimer = 0;
         _isAlive = true;
         _checkRadius = 0.1f;
         _lastPosition = transform.position;
-        _dashForce = 300f;
+        _dashForce = GetDashForce(_difficulty);
         _jumpForce = 500f;
         if (GameObject.FindGameObjectWithTag("Player") != null) { 
             _playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>(); 
@@ -158,6 +160,10 @@ public class Woodcutter : MonoBehaviour
             return false;
         }
     }
+    private float GetDashForce(int difficulty)
+    {
+        return (difficulty + 1) * 100f;
+    }
 
     private void Jump()
     {
@@ -171,10 +177,10 @@ public class Woodcutter : MonoBehaviour
 
     private void Death()
     {
-        _isAlive = false;
         _animator.SetTrigger("Death");
         GetComponent<CircleCollider2D>().enabled = false;
         tag = "Untagged";
+        _isAlive = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

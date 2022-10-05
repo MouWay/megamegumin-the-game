@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using TMPro;
 
-public class HardDifficultyDescription : MonoBehaviour
+public class HardDifficultyDescription : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject _descriptionText;
+    [SerializeField] private GameObject _blurObject;
+
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        
+        _descriptionText.GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetString("HardDifficultyDescription");
+        _descriptionText.SetActive(true);
+        _blurObject.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnPointerExit(PointerEventData eventData)
     {
-        
+        _descriptionText.SetActive(false);
+        _blurObject.SetActive(false);
     }
 }

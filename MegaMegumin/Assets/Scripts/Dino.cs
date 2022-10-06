@@ -32,9 +32,9 @@ public class Dino : MonoBehaviour
         _deathTimer = 0;
         _isAlive = true;
         _checkRadius = 0.01f;
-        _lastPosition = transform.position;
+        _currentPosition = transform.position;
         _dashForce = GetDashForce(_difficulty);
-        _jumpForce = 500f;
+        _jumpForce = 1000f;
         _playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
@@ -50,7 +50,7 @@ public class Dino : MonoBehaviour
             Flip(_direction);
             ReactToPlayer();
             ChangePositionValue();
-            if (IsPositionChanged() == false && _hasTarget)
+            if (IsPositionChanged() == false && _hasTarget && _isGrounded)
             {
                 Dash();
             }
@@ -73,20 +73,10 @@ public class Dino : MonoBehaviour
         }
     }
 
-    public void MoveToPlayer()
-    {
-        transform.position += _speed * Time.deltaTime * _direction * Vector3.left;
-    }
-
     public void ReactToPlayer()
     {
         Vector3 _playerDirection = _playerTransform.position - transform.position;
         _hasTarget = _playerDirection.magnitude < 100.0f;
-    }
-
-    public void AttackPlayer()
-    {
-        //Behavior if player is inside attack area
     }
 
     private void Flip(int direction)
@@ -109,7 +99,7 @@ public class Dino : MonoBehaviour
     private bool IsPositionChanged()
     {
         Vector3 positionChange = _currentPosition - _lastPosition;
-        bool isPositionChanged = positionChange.magnitude > 0.06f;
+        bool isPositionChanged = positionChange.magnitude > 0.03f;
         return isPositionChanged;
     }
 
@@ -134,12 +124,11 @@ public class Dino : MonoBehaviour
         _isAlive = false;
         _animator.SetTrigger("Death");
         GetComponent<CircleCollider2D>().enabled = false;
-        tag = "Untagged";
     }
 
     private float GetDashForce(int difficulty)
     {
-        return (difficulty + 1) * 100f;
+        return (difficulty + 1) * 200f;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

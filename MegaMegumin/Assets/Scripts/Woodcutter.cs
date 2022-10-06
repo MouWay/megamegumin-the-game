@@ -39,7 +39,7 @@ public class Woodcutter : MonoBehaviour
         _checkRadius = 0.1f;
         _lastPosition = transform.position;
         _dashForce = GetDashForce(_difficulty);
-        _jumpForce = 500f;
+        _jumpForce = 1000f;
         if (GameObject.FindGameObjectWithTag("Player") != null) { 
             _playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>(); 
         }
@@ -96,11 +96,6 @@ public class Woodcutter : MonoBehaviour
         }
     }
 
-    public void MoveToPlayer()
-    {
-        transform.position += _speed * Time.deltaTime * _direction * Vector3.left;
-    }
-
     public void ReactToPlayer()
     {
         _hasTarget = GetDistanceToPlayer() < 100.0f;
@@ -145,7 +140,7 @@ public class Woodcutter : MonoBehaviour
     private bool IsPositionChanged()
     {
         Vector3 positionChange = _currentPosition - _lastPosition;
-        bool isPositionChanged = positionChange.magnitude > 0.06f;
+        bool isPositionChanged = positionChange.magnitude > 0.03f;
         return isPositionChanged;
     }
 
@@ -162,7 +157,7 @@ public class Woodcutter : MonoBehaviour
     }
     private float GetDashForce(int difficulty)
     {
-        return (difficulty + 1) * 100f;
+        return (difficulty + 1) * 200f;
     }
 
     private void Jump()

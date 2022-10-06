@@ -22,7 +22,7 @@ public class SpawnManager : MonoBehaviour
         _colors = new List<Color> { new Color(1f, 1f, 1f), new Color(0.5f, 1f, 1f), new Color(0.4f, 0f, 1f) };
         SetSceneColor();
         _spawnIndexes = new List<int>();
-        _spawnCount = new List<int> { 15, 30, 50 };
+        _spawnCount = new List<int> { 25, 50, 75 };
         _difficulty = PlayerPrefs.GetInt("Difficulty");
         Instantiate(_defuserPrefab, _defuserSpawnPoints[(int)Random.Range(0, 4)]);
         while (_spawnIndexes.Count != _spawnCount[_difficulty])

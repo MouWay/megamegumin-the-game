@@ -35,8 +35,8 @@ public class Player : MonoBehaviour
         _spriteRenderer = _player.GetComponent<SpriteRenderer>();
         _animator = _player.GetComponent<Animator>();
         _rigidBody = _player.GetComponent<Rigidbody2D>();
-        _speed = 4f;
-        _jumpForce = 400f;
+        _speed = 5f;
+        _jumpForce = 800f;
         _checkRadius = 0.1f;
     }
 

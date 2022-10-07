@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _missile;
     [SerializeField] private GameObject _hand;
+    [SerializeField] private GameObject _gun;
     [SerializeField] private Transform _groundCheck;
     [SerializeField] private Transform _missilePosition;
     [SerializeField] private Transform _shoulderPosition;
@@ -42,10 +43,18 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        _previousDirection = _direction;
         _direction = GetDirection();
-        var angle = Vector2.Angle(_direction, _previousDirection);
-        _hand.transform.RotateAround(_shoulderPosition.position, Vector3.forward, _direction.y < _previousDirection.y ? angle : -angle);
+        var angle = Vector2.Angle(_direction, Vector2.right) + 180;
+        _hand.transform.localEulerAngles = new Vector3(0f, 0f, GetDirection().y > 0 ? angle : -angle);
+        if (GetDirection().x > 0)
+        {
+            _hand.GetComponent<SpriteRenderer>().flipY = true;
+            _gun.GetComponent<SpriteRenderer>().flipY = true;
+        } else
+        {
+            _hand.GetComponent<SpriteRenderer>().flipY = false;
+            _gun.GetComponent<SpriteRenderer>().flipY = false;
+        }
 
         CheckGround();
         if (_isAlive)
@@ -88,7 +97,7 @@ public class Player : MonoBehaviour
     private void Shoot()
     {
         int direction = _spriteRenderer.flipX ? -1 : 1;
-        Instantiate(_missile, _missilePosition.position, Quaternion.Euler(0, 0, 90 - 90 * direction));
+        Instantiate(_missile, _missilePosition.position, Quaternion.Euler(_gun.transform.eulerAngles));
         _animator.SetTrigger("Shoot");
     }
 
@@ -97,17 +106,13 @@ public class Player : MonoBehaviour
         if (_direction.x > 0)
         {
             _spriteRenderer.flipX = true;
-            _hand.GetComponent<SpriteRenderer>().flipX = true;
             _shoulderPosition.localPosition = new Vector3(-0.11f, 0.07f, 0);
-            _missilePosition.localPosition = new Vector3(0.179f, 0.135f, 0);
             _playerCollider.offset = new Vector2(-0.05f, 0);
         } 
         else if (_direction.x < 0)
         {
             _spriteRenderer.flipX = false;
-            _hand.GetComponent<SpriteRenderer>().flipX = false;
             _shoulderPosition.localPosition = new Vector3(0.11f, 0.07f, 0);
-            _missilePosition.localPosition = new Vector3(-0.179f, 0.135f, 0);
             _playerCollider.offset = new Vector2(0.05f, 0);
         }
     }
@@ -130,12 +135,19 @@ public class Player : MonoBehaviour
         //_hand.transform.eulerAngles = new Vector3(0f, 0f, transform.position.y < mousePosition.y ? angle : -angle);//немного магии на последок
         //_hand.transform.RotateAround(_shoulderPosition.position, Vector3.forward, transform.position.y < mousePosition.y ? angle : -angle);
     }
-
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyWeapon"))
         {
             Death();
         }
+    }
+
+    private float GetAngle(float angle)
+    {
+        angle = _direction.normalized.y < _previousDirection.normalized.y ? angle : -angle;
+        angle = _direction.x > 0 ? -angle : angle;
+        return angle;
     }
 }

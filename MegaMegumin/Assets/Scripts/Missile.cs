@@ -7,19 +7,20 @@ public class Missile : MonoBehaviour
     [SerializeField] private GameObject _explotion;
 
     private float _speed;
-    private float _direction;
+    private float _rotation;
     private List<string> _explosionTags;
 
     private void Start()
     {
         _explosionTags = new List<string> {"Enemy", "MissileDestroyer", "Boss", "Ground"};
-        _direction = transform.rotation.z == 1 ? -1 : 1;
+        _rotation = ((transform.eulerAngles.z + 180) % 360) * Mathf.PI / 180;
         _speed = 10f;    
     }
 
     private void Update()
     {
-        transform.position += _direction * _speed * Time.deltaTime * Vector3.left;
+        Vector3 _direction = new Vector3(Mathf.Cos(_rotation), Mathf.Sin(_rotation), 0);
+        transform.localPosition += _speed * Time.deltaTime * _direction;
     }
 
     private void OnCollisionEnter2D(Collision2D _collision)

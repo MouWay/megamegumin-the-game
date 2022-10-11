@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Dino : MonoBehaviour
 {
+    [SerializeField] private GameObject _woodcutterPrefab;
     [SerializeField] private Transform _groundCheck;
     [SerializeField] private LayerMask _ground;
-    [SerializeField] private GameObject _woodcutterPrefab;
 
-    private float _speed;
     private float _dashForce;
     private float _jumpForce;
     private float _checkRadius;
-    private float _deathTimer;
     private int _direction;
     private int _difficulty;
     private bool _hasTarget;
@@ -29,7 +27,6 @@ public class Dino : MonoBehaviour
     private void Start()
     {
         _difficulty = PlayerPrefs.GetInt("Difficulty");
-        _deathTimer = 0;
         _isAlive = true;
         _checkRadius = 0.01f;
         _currentPosition = transform.position;
@@ -60,17 +57,19 @@ public class Dino : MonoBehaviour
             }
         } else
         {
-            _deathTimer += Time.deltaTime;
-            if (_deathTimer > 2)
-            {
-                Instantiate(_woodcutterPrefab, transform.position, Quaternion.identity);
-                Destroy(this.gameObject);
-            }
             if (_isGrounded)
             {
                 GetComponent<Rigidbody2D>().simulated = false;
             }
         }
+    }
+
+    IEnumerator DeathCoroutine(GameObject _woodcutterPrefab, Transform transform)
+    {
+        yield return new WaitForSeconds(2f);
+
+        Instantiate(_woodcutterPrefab, transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
     }
 
     public void ReactToPlayer()
@@ -124,6 +123,7 @@ public class Dino : MonoBehaviour
         _isAlive = false;
         _animator.SetTrigger("Death");
         GetComponent<CircleCollider2D>().enabled = false;
+        StartCoroutine(DeathCoroutine(_woodcutterPrefab, transform));
     }
 
     private float GetDashForce(int difficulty)

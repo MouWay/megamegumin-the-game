@@ -5,15 +5,13 @@ using UnityEngine;
 public class Woodcutter : MonoBehaviour
 {
     [SerializeField] private Transform _groundCheck;
-    [SerializeField] private LayerMask _ground;
     [SerializeField] private GameObject _axe;
     [SerializeField] private List<Transform> _hands;
+    [SerializeField] private LayerMask _ground;
 
-    private float _speed;
     private float _dashForce;
     private float _jumpForce;
     private float _checkRadius;
-    private float _deathTimer;
     private float _attackDistance;
     private float _attackCooldown;
     private int _direction;
@@ -34,7 +32,6 @@ public class Woodcutter : MonoBehaviour
         _difficulty = PlayerPrefs.GetInt("Difficulty");
         _attackCooldown = 0;
         _attackDistance = 3f;
-        _deathTimer = 0;
         _isAlive = true;
         _checkRadius = 0.1f;
         _lastPosition = transform.position;
@@ -84,16 +81,18 @@ public class Woodcutter : MonoBehaviour
         }
         else
         {
-            _deathTimer += Time.deltaTime;
-            if (_deathTimer > 2)
-            {
-                Destroy(this.gameObject);
-            }
             if (_isGrounded)
             {
                 GetComponent<Rigidbody2D>().simulated = false;
             }
         }
+    }
+
+    IEnumerator DeathCoroutine()
+    {
+        yield return new WaitForSeconds(2f);
+
+        Destroy(this.gameObject);
     }
 
     public void ReactToPlayer()
@@ -120,6 +119,7 @@ public class Woodcutter : MonoBehaviour
         }
         return 0;
     }
+
     private void Flip(int direction)
     {
         _spriteRenderer.flipX = direction == 1 ? true : false;
@@ -155,6 +155,7 @@ public class Woodcutter : MonoBehaviour
             return false;
         }
     }
+
     private float GetDashForce(int difficulty)
     {
         return (difficulty + 1) * 200f;
@@ -176,6 +177,7 @@ public class Woodcutter : MonoBehaviour
         GetComponent<CircleCollider2D>().enabled = false;
         tag = "Untagged";
         _isAlive = false;
+        StartCoroutine(DeathCoroutine());
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

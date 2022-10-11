@@ -16,21 +16,18 @@ public class Player : MonoBehaviour
     private float _speed;
     private float _jumpForce;
     private float _checkRadius;
-    private float _deathTimer;
     private bool _isAlive;
+    private bool _isGrounded;
     private Vector3 _moveVector;
-    private Vector3 _previousDirection;
     private Vector3 _direction;
     private Rigidbody2D _rigidBody;
     private BoxCollider2D _playerCollider;
     private SpriteRenderer _spriteRenderer;
     private Animator _animator;
-    private bool _isGrounded;
 
     private void Start()
     {
         _direction = GetDirection();
-        _deathTimer = 0f;
         _isAlive = true;
         _playerCollider = _player.GetComponent<BoxCollider2D>();
         _spriteRenderer = _player.GetComponent<SpriteRenderer>();
@@ -43,26 +40,11 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        _direction = GetDirection();
-        var angle = Vector2.Angle(_direction, Vector2.right) + 180;
-        _hand.transform.localEulerAngles = new Vector3(0f, 0f, GetDirection().y > 0 ? angle : -angle);
-        if (GetDirection().x > 0)
-        {
-            _hand.GetComponent<SpriteRenderer>().flipY = true;
-            _gun.GetComponent<SpriteRenderer>().flipY = true;
-        } else
-        {
-            _hand.GetComponent<SpriteRenderer>().flipY = false;
-            _gun.GetComponent<SpriteRenderer>().flipY = false;
-        }
-
         CheckGround();
         if (_isAlive)
         {
-            _animator.SetFloat("moveX", Mathf.Abs(Input.GetAxis("Horizontal")));
-            float _horizontalMove = _speed * Input.GetAxis("Horizontal") * Time.deltaTime;
-            _moveVector = new Vector3(_horizontalMove, 0, 0);
-            _player.transform.position += _moveVector;
+            SetCursorDirectionToShoot();
+            Move();
             Flip();
 
             if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
@@ -76,7 +58,6 @@ public class Player : MonoBehaviour
             }
         } else
         {
-            _deathTimer += Time.deltaTime;
             if (_isGrounded)
             {
                 GetComponent<Rigidbody2D>().simulated = false;
@@ -101,6 +82,14 @@ public class Player : MonoBehaviour
         _animator.SetTrigger("Shoot");
     }
 
+    private void Move()
+    {
+        _animator.SetFloat("moveX", Mathf.Abs(Input.GetAxis("Horizontal")));
+        float _horizontalMove = _speed * Input.GetAxis("Horizontal") * Time.deltaTime;
+        _moveVector = new Vector3(_horizontalMove, 0, 0);
+        _player.transform.position += _moveVector;
+    }
+
     private void Flip()
     {
         if (_direction.x > 0)
@@ -117,6 +106,23 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void SetCursorDirectionToShoot()
+    {
+        _direction = GetDirection();
+        var angle = Vector2.Angle(_direction, Vector2.right) + 180;
+        _hand.transform.localEulerAngles = new Vector3(0f, 0f, GetDirection().y > 0 ? angle : -angle);
+        if (GetDirection().x > 0)
+        {
+            _hand.GetComponent<SpriteRenderer>().flipY = true;
+            _gun.GetComponent<SpriteRenderer>().flipY = true;
+        }
+        else
+        {
+            _hand.GetComponent<SpriteRenderer>().flipY = false;
+            _gun.GetComponent<SpriteRenderer>().flipY = false;
+        }
+    }
+
     private void Death()
     {
         _isAlive = false;
@@ -129,11 +135,8 @@ public class Player : MonoBehaviour
     private Vector3 GetDirection()
     {
         var mousePosition = Input.mousePosition;
-        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition); //положение мыши из экранных в мировые координаты
+        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         return mousePosition - transform.position;
-        //var angle = Vector2.Angle(Vector2.right, mousePosition - transform.position) + 180;//угол между вектором от объекта к мыше и осью х
-        //_hand.transform.eulerAngles = new Vector3(0f, 0f, transform.position.y < mousePosition.y ? angle : -angle);//немного магии на последок
-        //_hand.transform.RotateAround(_shoulderPosition.position, Vector3.forward, transform.position.y < mousePosition.y ? angle : -angle);
     }
     
     private void OnCollisionEnter2D(Collision2D collision)
@@ -142,12 +145,5 @@ public class Player : MonoBehaviour
         {
             Death();
         }
-    }
-
-    private float GetAngle(float angle)
-    {
-        angle = _direction.normalized.y < _previousDirection.normalized.y ? angle : -angle;
-        angle = _direction.x > 0 ? -angle : angle;
-        return angle;
     }
 }
